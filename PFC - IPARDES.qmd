@@ -1,0 +1,337 @@
+---
+title: "Manual de Ferramentas Computacionais no IPARDES"
+author: "José Carlos Martinez"
+lang: pt
+format:
+  html:
+    toc: true
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+  docx:
+    toc: true
+    number-sections: true
+execute: 
+  echo: true
+  eval: false
+  warning: false
+  message: false
+editor: visual
+---
+
+# Linguagens de Programação: R
+
+![](images/Rlogo.png){width="289"}
+
+O **R** é uma linguagem de programação e ambiente para computação estatística e gráfica, e parte do projeto GNU1: Portanto é uma linguagem de programação livre e código aberto. A instalação do R pode ser feita pelo [*"Comprehensive R Archive Network"*](https://cran.r-project.org/) (CRAN), Na página você encontrará as distribuições R para diferentes sistemas operacionais: Linux (Debian, Fedora,Redhat, Ubuntu), mac OS e Windows. Ainda na página do CRAN você pode acessar a útil lista de pacotes agrupados por tarefas/áreas é o chamado CRAN Task views.
+
+#### **RStudio**
+
+O RStudio é uma IDE (Ambiente de Desenvolvimento Integrado) e um dos mais populares da sua categoria, devido ao fato de ser rápido e fácil de aprender. Além disso, a IDE já vem totalmente habilitada para o uso do R em todos os aspectos.
+
+O download pode ser feito pelo site: <https://posit.co/download/rstudio-desktop/>
+
+#### Configuração de Proxy para Instalação de Pacotes
+
+Em ambientes institucionais como o do IPARDES, o R pode não conseguir acessar a internet diretamente. Isso ocorre porque a rede está protegida por um servidor proxy, que filtra e controla o tráfego. Sem configurar corretamente esse proxy, você pode ter problemas ao instalar pacotes do CRAN ou acessar bibliotecas externas.
+
+#### Como configurar o Proxy no R
+
+Siga os passos abaixo para configurar o proxy institucional do IPARDES:
+
+1.  Execute o seguinte comando no R para abrir o arquivo `.Rprofile`, onde serão salvas as configurações de rede:
+
+    ```{r, .results = "hide"}
+
+    file.edit(file.path("~", ".Rprofile"))
+    ```
+
+2.  No arquivo que será aberto, insira o seguente código:
+
+    ```{r, message=FALSE, warning=FALSE, results='hide'}
+    Sys.getenv(c("http_proxy", "https_proxy", "http_proxy_user"))
+    Sys.setenv(http_proxy="proxy.ipardes.parana:8080")
+    Sys.setenv(https_proxy="proxy.ipardes.parana:8080")
+    Sys.setenv(http_proxy_user="ask")
+    Sys.getenv(c("http_proxy", "https_proxy", "http_proxy_user"))
+    ```
+
+3.  Salve o arquivo e reinicie o R ou o RStudio.
+
+#### Gestão de Diretórios e Organização de Arquivos no R
+
+Ao usar o R, uma das primeiras coisas importantes a se compreender é como organizar corretamente os arquivos e pastas do seu projeto. Essa prática permite que o R encontre com facilidade os arquivos necessários (como bases de dados), mantendo o trabalho limpo, estruturado e funcional. Além disso, assegura que os scripts possam ser executados de forma reprodutível, o que é especialmente relevante em contextos institucionais como o IPARDES, onde a padronização e a confiabilidade das análises são fundamentais.
+
+#### Diretório de Trabalho (Working Directory) 📁
+
+O diretório de trabalho é a pasta onde o R irá buscar arquivos para leitura e onde irá salvar arquivos criados.
+
+#### Verificando o diretório atual:
+
+Antes de qualquer coisa, é útil saber em qual pasta o R está trabalhando no momento. Isso é importante porque, se você tentar carregar um arquivo e ele não estiver nessa pasta, o R não vai encontrá-lo.
+
+Para verificar o diretório de trabalho atual, use o seguinte comando:
+
+```{r, eval=TRUE}
+getwd()
+```
+
+Esse comando significa “get working directory” – ou seja, *obter o diretório de trabalho*. Ele vai mostrar o caminho da pasta atual onde o R está procurando e salvando arquivos, Para listar o conteúdo de um diretório, utilize a funçao `list` , `files()` ou `dir()`
+
+#### Teste básico
+
+```{r, eval=TRUE}
+1 + 1
+```
+
+#### Pacotes
+
+Um pacote no R é um conjunto de funções que visam resolver um problema em específico. O R já vem com alguns pacotes instalados. Geralmente chamamos esses pacotes de base R. Mas a força do R está na gigantesca variedade de pacotes desenvolvidos pela comunidade, em especial, pelos criadores do `tidyverse`
+
+#### Instalando e carregando pacotes
+
+Para instalar um pacote da CRAN, usamos a função `install.packages()`.
+
+```{r}
+# Instalando um pacote
+install.packages("tidyverse")
+# Instalando vários pacotes de uma vez
+install.packages(c("tidyverse", "rmarkdown", "devtools"))
+```
+
+Para usar as funções de um pacote, precisamos carregá-lo. Fazemos isso usando a função `library()`.
+
+```{r}
+library(tidyverse)
+```
+
+#### Leitura de Arquivos .csv e .xlsx no R 📥
+
+A leitura correta de arquivos é um dos primeiros e mais importantes passos para qualquer análise de dados. Nesta seção, abordamos como importar arquivos .csv (texto separado por vírgulas) e .xlsx (planilhas do Excel) usando as linguagens R e Python, com foco especial nos pacotes mais utilizados e na prevenção de erros comuns.
+
+Leitura de .csv e .xlsx
+
+📦 Pacotes utilizados: `readr` – para arquivos .csv
+
+`readxl` – para arquivos .xlsx
+
+`openxlsx` (alternativo)
+
+Instale (se necessário) e carregue os pacotes conforme o exemplo:
+
+```{r}
+# Instalar os pacotes (somente se ainda não estiverem instalados)
+install.packages("readr")
+install.packages("readxl")
+
+# Carregar os pacotes
+library(readr)
+library(readxl)
+
+# Leitura de um arquivo .CSV
+dados_csv <- read_csv("dados/meu_arquivo.csv")
+
+# Caso o separador seja ponto e vírgula
+dados_csv <- read_delim("dados/arquivo.csv", delim = ";")
+
+# Visualizar as primeiras linhas
+head(dados_csv)
+# Para vermos o resumo dos dados, podemos utilizar a função glimpse()
+glimpse(dados_csv)
+
+# Leitura de um arquivo .xlsx
+dados_excel <- read_excel("dados/meu_arquivo.xlsx")
+
+# Leitura de uma planilha específica
+dados_excel2 <- read_excel("dados/meu_arquivo.xlsx", sheet = "Planilha2")
+
+# Visualizar as primeiras linhas
+head(dados_excel)
+# Para vermos o resumo dos dados, podemos utilizar a função glimpse()
+glimpse(dados_excel)
+```
+
+# Linguagens de Programação: Python
+
+![](images/python_logo_icon_168886.png){width="289"}
+
+O **Python** é uma linguagem de programação moderna, versátil e de código aberto, amplamente utilizada em áreas como análise de dados, automação, inteligência artificial e ciência de dados. Sua sintaxe simples facilita o aprendizado e sua enorme comunidade oferece suporte constante e milhares de pacotes prontos para uso.
+
+------------------------------------------------------------------------
+
+#### Preparando o Ambiente de Trabalho
+
+Para Instalar a ferramenta Acesse o site oficial do Python:
+
+🔗 <https://www.python.org/downloads/>
+
+Clique em Download Python 3.x.x (a versão mais atual) e siga os passos do instalador. Durante a instalação, marque a opção "Add Python to PATH" — isso facilita o uso no terminal e em editores como o VS Code. Após instalar o Python, você já poderá usá-lo diretamente pelo terminal (prompt de comando), mas isso pode ser desconfortável para quem está iniciando. Por isso, recomendamos o uso de um ambiente de desenvolvimento integrado (IDE), como o Visual Studio Code (VS Code).
+
+A IDE facilita muito o processo de escrita, organização e execução de códigos, oferecendo recursos como:
+
+-   Destaque de sintaxe
+
+-   Sugestões automáticas
+
+-   Execução de trechos de código
+
+-   Terminal integrado
+
+-   Organização de pastas e arquivos do projeto
+
+Ou seja, enquanto o Python é a linguagem de programação, o VS Code é o ambiente onde você vai trabalhar com ela de forma prática e eficiente.
+
+#### **Visual Studio Code (VS Code)**
+
+O VS Code é uma IDE leve, gratuita e muito poderosa, desenvolvida pela Microsoft.
+
+🔗 Baixe em: <https://code.visualstudio.com/>
+
+Após instalar, abra o VS Code e vá na aba de extensões (ícone de quadrado no menu lateral esquerdo).
+
+> Pesquise e instale a extensão chamada **Python** (desenvolvida pela Microsoft).
+
+------------------------------------------------------------------------
+
+#### Usando Python no VS Code
+
+1.  Crie uma nova pasta para seu projeto (ex: `ipardes-python`).
+2.  Dentro da pasta, crie um novo arquivo com o nome `teste.py`
+3.  Escreva o seguinte código:
+
+**Teste básico**
+
+```{python, eval=TRUE}
+print("Olá, IPARDES!")
+2 + 2
+```
+
+#### Pacotes No Python 📦
+
+No Python, os pacotes (ou módulos) também são conjuntos de funções e ferramentas que facilitam tarefas específicas, como análise de dados, visualização, estatística ou automação. Assim como no R, o poder do Python está na sua enorme comunidade que desenvolve pacotes poderosos como `pandas` , `numpy` , `matplotlib` , entre muitos outros.
+
+**Instalando e importando pacotes**
+
+Você pode instalar pacotes diretamente pelo terminal (Prompt de Comando no Windows ou Terminal no Linux/macOS). A instalação de pacotes no Python é feita, na maioria das vezes, com o `pip` o gerenciador padrão de pacotes da linguagem.
+
+```{python, echo=TRUE, eval=FALSE}
+# Instalando um pacote individual
+!pip install pandas
+
+# Importando pacotes
+import pandas as pd
+```
+
+#### Leitura de arquivos .csv e .xlsx 📥
+
+No Python a Leitura de arquivos .csv e .xlsx e feito com os pacotes:
+
+`pandas` – pacote principal para análise e leitura de dados em geral.
+
+`openpyxl` – necessário para leitura de arquivos .xlsx com o pandas.
+
+```{python}
+
+# Importar os pacotes
+import pandas as pd
+
+# Leitura de arquivo CSV
+df_csv = pd.read_csv("dados/meu_arquivo.csv")
+
+# Visualizar as primeiras linhas
+print(df_csv.head())
+
+# Leitura de arquivo .xlsx Excel
+df_xlsx = pd.read_excel("dados/meu_arquivo.xlsx", engine="openpyxl")
+
+# Leitura de uma planilha específica
+df_xlsx2 = pd.read_excel("dados/meu_arquivo.xlsx", sheet_name="Planilha2", engine="openpyxl")
+
+# Visualizar as primeiras linhas
+print(df_xlsx.head())
+```
+
+# Bancos de Dados Relacionais
+
+![](images/RDBMS.png)
+
+Os **bancos de dados relacionais** são sistemas projetados para armazenar e organizar grandes volumes de informações de forma estruturada, utilizando a linguagem SQL (*Structured Query Language*). Eles são compostos por tabelas interconectadas por relações, garantindo consistência e integridade dos dados.
+
+#### Principais Sistemas de Banco de Dados Relacional
+
+-   **MySQL** – muito usado em aplicações web, é gratuito e de código aberto.
+
+-   **PostgreSQL** – poderoso, gratuito e com foco em conformidade com os padrões SQL.
+
+-   **SQL Server** – solução da Microsoft, com foco em ambientes corporativos.
+
+-   **Oracle Database** – robusto, seguro e altamente escalável, usado em grandes instituições.
+
+-   **SQLite –** Leve, Didático e ideal para iniciantes
+
+![](images/sqlite.svgTOP.png){width="298"}
+
+#### **SQLite**
+
+O SQLite é um banco de dados relacional leve, portátil e de código aberto. Toda a base de dados fica armazenada em um único arquivo .db, o que o torna ideal para testes, aprendizagem e uso em computadores pessoais ou ambientes institucionais como o IPARDES, que trabalham com grandes volumes de dados, mas não necessariamente precisam de soluções complexas de banco em rede.
+
+> 💡 **Por que aprender com SQLite?**\
+> - Não requer servidor instalado.\
+> - Interface gráfica amigável (DB Browser).\
+> - Ideal para praticar comandos SQL e automatizar análises com R/Python.
+
+------------------------------------------------------------------------
+
+#### **Preparando o Ambiente de Trabalho**
+
+Acesse o site oficial e clique no botão "Download":<https://www.sqlite.org/>
+
+Role a página até a seção **“Precompiled Binaries for Windows”**
+
+Verifique a arquitetura do seu sistema (32 ou 64 bits): Para isso, vá até **Configurações \> Sistema \> Sobre** no seu Windows e procure por "Tipo de sistema".
+
+Baixe o pacote adequado:
+
+Para **64 bits**, baixe:\
+`sqlite-tools-win-x64-XXXXXXX.zip`
+
+Para **32 bits**, baixe:\
+`sqlite-tools-win-x86-XXXXXXX.zip`
+
+O número `XXXXXXX` representa a versão atual (ex: 3490100). Pegue sempre a versão mais recente no topo da lista.
+
+**Extraia o conteúdo do `.zip`** para uma pasta acessível, como por exemplo: C:\Programas\SQLite\
+Após extrair os arquivos do ZIP baixado, você pode: **Clicar duas vezes em `sqlite3.exe`** dentro da pasta para abrir o terminal do SQLite.
+
+Ou, se preferir: **Adicionar o caminho da pasta ao “Path” do sistema**, para poder acessar o SQLite digitando `sqlite3` diretamente no terminal de qualquer lugar.\
+(Opcional, mas recomendado para quem for automatizar comandos no terminal.)
+
+Com ele, você poderá:
+
+-   Criar e editar arquivos `.db`\
+-   Importar dados `.csv` ou `.xlsx`\
+-   Executar comandos SQL\
+-   Visualizar e exportar tabelas
+
+------------------------------------------------------------------------
+
+#### Leitura de Arquivos `.csv` e `.xlsx` no SQLite (via Terminal)
+
+Antes de importar qualquer arquivo `.csv` no SQLite pelo terminal, é necessário:
+
+1.  Criar ou abrir um banco `.db`;
+
+2.  Definir o modo e o separador dos dados;
+
+3.  Importar o arquivo `.csv` para uma tabela.
+
+```{bash,eval"false"}
+sqlite caminho/para/seu_banco.db
+.mode csv
+.separator ","
+.import "caminho/para/arquivo.csv" nome_da_tabela
+
+# Observação, O separador padrão é vírgula "," mas pode ser alterado 
+# para ponto e vírgula ";" com .separator ";" conforme a base de dados.
+```

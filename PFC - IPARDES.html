@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="José Carlos Martinez">
+
+<title>Manual de Ferramentas Computacionais no IPARDES</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="PFC - IPARDES_files/libs/clipboard/clipboard.min.js"></script>
+<script src="PFC - IPARDES_files/libs/quarto-html/quarto.js"></script>
+<script src="PFC - IPARDES_files/libs/quarto-html/popper.min.js"></script>
+<script src="PFC - IPARDES_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="PFC - IPARDES_files/libs/quarto-html/anchor.min.js"></script>
+<link href="PFC - IPARDES_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="PFC - IPARDES_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="PFC - IPARDES_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="PFC - IPARDES_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="PFC - IPARDES_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#linguagens-de-programação-r" id="toc-linguagens-de-programação-r" class="nav-link active" data-scroll-target="#linguagens-de-programação-r"><span class="header-section-number">1</span> Linguagens de Programação: R</a></li>
+  <li><a href="#linguagens-de-programação-python" id="toc-linguagens-de-programação-python" class="nav-link" data-scroll-target="#linguagens-de-programação-python"><span class="header-section-number">2</span> Linguagens de Programação: Python</a></li>
+  <li><a href="#bancos-de-dados-relacionais" id="toc-bancos-de-dados-relacionais" class="nav-link" data-scroll-target="#bancos-de-dados-relacionais"><span class="header-section-number">3</span> Bancos de Dados Relacionais</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Outros formatos</h2><ul><li><a href="PFC---IPARDES.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="PFC - IPARDES.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Manual de Ferramentas Computacionais no IPARDES</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>José Carlos Martinez </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="linguagens-de-programação-r" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Linguagens de Programação: R</h1>
+<p><img src="images/Rlogo.png" class="img-fluid" width="289"></p>
+<p>O <strong>R</strong> é uma linguagem de programação e ambiente para computação estatística e gráfica, e parte do projeto GNU1: Portanto é uma linguagem de programação livre e código aberto. A instalação do R pode ser feita pelo <a href="https://cran.r-project.org/"><em>“Comprehensive R Archive Network”</em></a> (CRAN), Na página você encontrará as distribuições R para diferentes sistemas operacionais: Linux (Debian, Fedora,Redhat, Ubuntu), mac OS e Windows. Ainda na página do CRAN você pode acessar a útil lista de pacotes agrupados por tarefas/áreas é o chamado CRAN Task views.</p>
+<section id="rstudio" class="level4" data-number="1.0.0.1">
+<h4 data-number="1.0.0.1" class="anchored" data-anchor-id="rstudio"><span class="header-section-number">1.0.0.1</span> <strong>RStudio</strong></h4>
+<p>O RStudio é uma IDE (Ambiente de Desenvolvimento Integrado) e um dos mais populares da sua categoria, devido ao fato de ser rápido e fácil de aprender. Além disso, a IDE já vem totalmente habilitada para o uso do R em todos os aspectos.</p>
+<p>O download pode ser feito pelo site: <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></p>
+</section>
+<section id="configuração-de-proxy-para-instalação-de-pacotes" class="level4" data-number="1.0.0.2">
+<h4 data-number="1.0.0.2" class="anchored" data-anchor-id="configuração-de-proxy-para-instalação-de-pacotes"><span class="header-section-number">1.0.0.2</span> Configuração de Proxy para Instalação de Pacotes</h4>
+<p>Em ambientes institucionais como o do IPARDES, o R pode não conseguir acessar a internet diretamente. Isso ocorre porque a rede está protegida por um servidor proxy, que filtra e controla o tráfego. Sem configurar corretamente esse proxy, você pode ter problemas ao instalar pacotes do CRAN ou acessar bibliotecas externas.</p>
+</section>
+<section id="como-configurar-o-proxy-no-r" class="level4" data-number="1.0.0.3">
+<h4 data-number="1.0.0.3" class="anchored" data-anchor-id="como-configurar-o-proxy-no-r"><span class="header-section-number">1.0.0.3</span> Como configurar o Proxy no R</h4>
+<p>Siga os passos abaixo para configurar o proxy institucional do IPARDES:</p>
+<ol type="1">
+<li><p>Execute o seguinte comando no R para abrir o arquivo <code>.Rprofile</code>, onde serão salvas as configurações de rede:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.edit</span>(<span class="fu">file.path</span>(<span class="st">"~"</span>, <span class="st">".Rprofile"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>No arquivo que será aberto, insira o seguente código:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.getenv</span>(<span class="fu">c</span>(<span class="st">"http_proxy"</span>, <span class="st">"https_proxy"</span>, <span class="st">"http_proxy_user"</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">http_proxy=</span><span class="st">"proxy.ipardes.parana:8080"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">https_proxy=</span><span class="st">"proxy.ipardes.parana:8080"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">http_proxy_user=</span><span class="st">"ask"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.getenv</span>(<span class="fu">c</span>(<span class="st">"http_proxy"</span>, <span class="st">"https_proxy"</span>, <span class="st">"http_proxy_user"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Salve o arquivo e reinicie o R ou o RStudio.</p></li>
+</ol>
+</section>
+<section id="gestão-de-diretórios-e-organização-de-arquivos-no-r" class="level4" data-number="1.0.0.4">
+<h4 data-number="1.0.0.4" class="anchored" data-anchor-id="gestão-de-diretórios-e-organização-de-arquivos-no-r"><span class="header-section-number">1.0.0.4</span> Gestão de Diretórios e Organização de Arquivos no R</h4>
+<p>Ao usar o R, uma das primeiras coisas importantes a se compreender é como organizar corretamente os arquivos e pastas do seu projeto. Essa prática permite que o R encontre com facilidade os arquivos necessários (como bases de dados), mantendo o trabalho limpo, estruturado e funcional. Além disso, assegura que os scripts possam ser executados de forma reprodutível, o que é especialmente relevante em contextos institucionais como o IPARDES, onde a padronização e a confiabilidade das análises são fundamentais.</p>
+</section>
+<section id="diretório-de-trabalho-working-directory" class="level4" data-number="1.0.0.5">
+<h4 data-number="1.0.0.5" class="anchored" data-anchor-id="diretório-de-trabalho-working-directory"><span class="header-section-number">1.0.0.5</span> Diretório de Trabalho (Working Directory) 📁</h4>
+<p>O diretório de trabalho é a pasta onde o R irá buscar arquivos para leitura e onde irá salvar arquivos criados.</p>
+</section>
+<section id="verificando-o-diretório-atual" class="level4" data-number="1.0.0.6">
+<h4 data-number="1.0.0.6" class="anchored" data-anchor-id="verificando-o-diretório-atual"><span class="header-section-number">1.0.0.6</span> Verificando o diretório atual:</h4>
+<p>Antes de qualquer coisa, é útil saber em qual pasta o R está trabalhando no momento. Isso é importante porque, se você tentar carregar um arquivo e ele não estiver nessa pasta, o R não vai encontrá-lo.</p>
+<p>Para verificar o diretório de trabalho atual, use o seguinte comando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/jcmonate/Desktop/PFC - IPARDES"</code></pre>
+</div>
+</div>
+<p>Esse comando significa “get working directory” – ou seja, <em>obter o diretório de trabalho</em>. Ele vai mostrar o caminho da pasta atual onde o R está procurando e salvando arquivos, Para listar o conteúdo de um diretório, utilize a funçao <code>list</code> , <code>files()</code> ou <code>dir()</code></p>
+</section>
+<section id="teste-básico" class="level4" data-number="1.0.0.7">
+<h4 data-number="1.0.0.7" class="anchored" data-anchor-id="teste-básico"><span class="header-section-number">1.0.0.7</span> Teste básico</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</section>
+<section id="pacotes" class="level4" data-number="1.0.0.8">
+<h4 data-number="1.0.0.8" class="anchored" data-anchor-id="pacotes"><span class="header-section-number">1.0.0.8</span> Pacotes</h4>
+<p>Um pacote no R é um conjunto de funções que visam resolver um problema em específico. O R já vem com alguns pacotes instalados. Geralmente chamamos esses pacotes de base R. Mas a força do R está na gigantesca variedade de pacotes desenvolvidos pela comunidade, em especial, pelos criadores do <code>tidyverse</code></p>
+</section>
+<section id="instalando-e-carregando-pacotes" class="level4" data-number="1.0.0.9">
+<h4 data-number="1.0.0.9" class="anchored" data-anchor-id="instalando-e-carregando-pacotes"><span class="header-section-number">1.0.0.9</span> Instalando e carregando pacotes</h4>
+<p>Para instalar um pacote da CRAN, usamos a função <code>install.packages()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalando um pacote</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalando vários pacotes de uma vez</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"rmarkdown"</span>, <span class="st">"devtools"</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Para usar as funções de um pacote, precisamos carregá-lo. Fazemos isso usando a função <code>library()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="leitura-de-arquivos-.csv-e-.xlsx-no-r" class="level4" data-number="1.0.0.10">
+<h4 data-number="1.0.0.10" class="anchored" data-anchor-id="leitura-de-arquivos-.csv-e-.xlsx-no-r"><span class="header-section-number">1.0.0.10</span> Leitura de Arquivos .csv e .xlsx no R 📥</h4>
+<p>A leitura correta de arquivos é um dos primeiros e mais importantes passos para qualquer análise de dados. Nesta seção, abordamos como importar arquivos .csv (texto separado por vírgulas) e .xlsx (planilhas do Excel) usando as linguagens R e Python, com foco especial nos pacotes mais utilizados e na prevenção de erros comuns.</p>
+<p>Leitura de .csv e .xlsx</p>
+<p>📦 Pacotes utilizados: <code>readr</code> – para arquivos .csv</p>
+<p><code>readxl</code> – para arquivos .xlsx</p>
+<p><code>openxlsx</code> (alternativo)</p>
+<p>Instale (se necessário) e carregue os pacotes conforme o exemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar os pacotes (somente se ainda não estiverem instalados)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readr"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar os pacotes</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura de um arquivo .CSV</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>dados_csv <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"dados/meu_arquivo.csv"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Caso o separador seja ponto e vírgula</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>dados_csv <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"dados/arquivo.csv"</span>, <span class="at">delim =</span> <span class="st">";"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar as primeiras linhas</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados_csv)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Para vermos o resumo dos dados, podemos utilizar a função glimpse()</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_csv)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura de um arquivo .xlsx</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>dados_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados/meu_arquivo.xlsx"</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura de uma planilha específica</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>dados_excel2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"dados/meu_arquivo.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Planilha2"</span>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar as primeiras linhas</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados_excel)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Para vermos o resumo dos dados, podemos utilizar a função glimpse()</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados_excel)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="linguagens-de-programação-python" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Linguagens de Programação: Python</h1>
+<p><img src="images/python_logo_icon_168886.png" class="img-fluid" width="289"></p>
+<p>O <strong>Python</strong> é uma linguagem de programação moderna, versátil e de código aberto, amplamente utilizada em áreas como análise de dados, automação, inteligência artificial e ciência de dados. Sua sintaxe simples facilita o aprendizado e sua enorme comunidade oferece suporte constante e milhares de pacotes prontos para uso.</p>
+<hr>
+<section id="preparando-o-ambiente-de-trabalho" class="level4" data-number="2.0.0.1">
+<h4 data-number="2.0.0.1" class="anchored" data-anchor-id="preparando-o-ambiente-de-trabalho"><span class="header-section-number">2.0.0.1</span> Preparando o Ambiente de Trabalho</h4>
+<p>Para Instalar a ferramenta Acesse o site oficial do Python:</p>
+<p>🔗 <a href="https://www.python.org/downloads/" class="uri">https://www.python.org/downloads/</a></p>
+<p>Clique em Download Python 3.x.x (a versão mais atual) e siga os passos do instalador. Durante a instalação, marque a opção “Add Python to PATH” — isso facilita o uso no terminal e em editores como o VS Code. Após instalar o Python, você já poderá usá-lo diretamente pelo terminal (prompt de comando), mas isso pode ser desconfortável para quem está iniciando. Por isso, recomendamos o uso de um ambiente de desenvolvimento integrado (IDE), como o Visual Studio Code (VS Code).</p>
+<p>A IDE facilita muito o processo de escrita, organização e execução de códigos, oferecendo recursos como:</p>
+<ul>
+<li><p>Destaque de sintaxe</p></li>
+<li><p>Sugestões automáticas</p></li>
+<li><p>Execução de trechos de código</p></li>
+<li><p>Terminal integrado</p></li>
+<li><p>Organização de pastas e arquivos do projeto</p></li>
+</ul>
+<p>Ou seja, enquanto o Python é a linguagem de programação, o VS Code é o ambiente onde você vai trabalhar com ela de forma prática e eficiente.</p>
+</section>
+<section id="visual-studio-code-vs-code" class="level4" data-number="2.0.0.2">
+<h4 data-number="2.0.0.2" class="anchored" data-anchor-id="visual-studio-code-vs-code"><span class="header-section-number">2.0.0.2</span> <strong>Visual Studio Code (VS Code)</strong></h4>
+<p>O VS Code é uma IDE leve, gratuita e muito poderosa, desenvolvida pela Microsoft.</p>
+<p>🔗 Baixe em: <a href="https://code.visualstudio.com/" class="uri">https://code.visualstudio.com/</a></p>
+<p>Após instalar, abra o VS Code e vá na aba de extensões (ícone de quadrado no menu lateral esquerdo).</p>
+<blockquote class="blockquote">
+<p>Pesquise e instale a extensão chamada <strong>Python</strong> (desenvolvida pela Microsoft).</p>
+</blockquote>
+<hr>
+</section>
+<section id="usando-python-no-vs-code" class="level4" data-number="2.0.0.3">
+<h4 data-number="2.0.0.3" class="anchored" data-anchor-id="usando-python-no-vs-code"><span class="header-section-number">2.0.0.3</span> Usando Python no VS Code</h4>
+<ol type="1">
+<li>Crie uma nova pasta para seu projeto (ex: <code>ipardes-python</code>).</li>
+<li>Dentro da pasta, crie um novo arquivo com o nome <code>teste.py</code></li>
+<li>Escreva o seguinte código:</li>
+</ol>
+<p><strong>Teste básico</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Olá, IPARDES!"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Olá, IPARDES!</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4</code></pre>
+</div>
+</div>
+</section>
+<section id="pacotes-no-python" class="level4" data-number="2.0.0.4">
+<h4 data-number="2.0.0.4" class="anchored" data-anchor-id="pacotes-no-python"><span class="header-section-number">2.0.0.4</span> Pacotes No Python 📦</h4>
+<p>No Python, os pacotes (ou módulos) também são conjuntos de funções e ferramentas que facilitam tarefas específicas, como análise de dados, visualização, estatística ou automação. Assim como no R, o poder do Python está na sua enorme comunidade que desenvolve pacotes poderosos como <code>pandas</code> , <code>numpy</code> , <code>matplotlib</code> , entre muitos outros.</p>
+<p><strong>Instalando e importando pacotes</strong></p>
+<p>Você pode instalar pacotes diretamente pelo terminal (Prompt de Comando no Windows ou Terminal no Linux/macOS). A instalação de pacotes no Python é feita, na maioria das vezes, com o <code>pip</code> o gerenciador padrão de pacotes da linguagem.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalando um pacote individual</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Importando pacotes</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="leitura-de-arquivos-.csv-e-.xlsx" class="level4" data-number="2.0.0.5">
+<h4 data-number="2.0.0.5" class="anchored" data-anchor-id="leitura-de-arquivos-.csv-e-.xlsx"><span class="header-section-number">2.0.0.5</span> Leitura de arquivos .csv e .xlsx 📥</h4>
+<p>No Python a Leitura de arquivos .csv e .xlsx e feito com os pacotes:</p>
+<p><code>pandas</code> – pacote principal para análise e leitura de dados em geral.</p>
+<p><code>openpyxl</code> – necessário para leitura de arquivos .xlsx com o pandas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar os pacotes</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura de arquivo CSV</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>df_csv <span class="op">=</span> pd.read_csv(<span class="st">"dados/meu_arquivo.csv"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar as primeiras linhas</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_csv.head())</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura de arquivo .xlsx Excel</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>df_xlsx <span class="op">=</span> pd.read_excel(<span class="st">"dados/meu_arquivo.xlsx"</span>, engine<span class="op">=</span><span class="st">"openpyxl"</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura de uma planilha específica</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>df_xlsx2 <span class="op">=</span> pd.read_excel(<span class="st">"dados/meu_arquivo.xlsx"</span>, sheet_name<span class="op">=</span><span class="st">"Planilha2"</span>, engine<span class="op">=</span><span class="st">"openpyxl"</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar as primeiras linhas</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_xlsx.head())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="bancos-de-dados-relacionais" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Bancos de Dados Relacionais</h1>
+<p><img src="images/RDBMS.png" class="img-fluid"></p>
+<p>Os <strong>bancos de dados relacionais</strong> são sistemas projetados para armazenar e organizar grandes volumes de informações de forma estruturada, utilizando a linguagem SQL (<em>Structured Query Language</em>). Eles são compostos por tabelas interconectadas por relações, garantindo consistência e integridade dos dados.</p>
+<section id="principais-sistemas-de-banco-de-dados-relacional" class="level4" data-number="3.0.0.1">
+<h4 data-number="3.0.0.1" class="anchored" data-anchor-id="principais-sistemas-de-banco-de-dados-relacional"><span class="header-section-number">3.0.0.1</span> Principais Sistemas de Banco de Dados Relacional</h4>
+<ul>
+<li><p><strong>MySQL</strong> – muito usado em aplicações web, é gratuito e de código aberto.</p></li>
+<li><p><strong>PostgreSQL</strong> – poderoso, gratuito e com foco em conformidade com os padrões SQL.</p></li>
+<li><p><strong>SQL Server</strong> – solução da Microsoft, com foco em ambientes corporativos.</p></li>
+<li><p><strong>Oracle Database</strong> – robusto, seguro e altamente escalável, usado em grandes instituições.</p></li>
+<li><p><strong>SQLite –</strong> Leve, Didático e ideal para iniciantes</p></li>
+</ul>
+<p><img src="images/sqlite.svgTOP.png" class="img-fluid" width="298"></p>
+</section>
+<section id="sqlite" class="level4" data-number="3.0.0.2">
+<h4 data-number="3.0.0.2" class="anchored" data-anchor-id="sqlite"><span class="header-section-number">3.0.0.2</span> <strong>SQLite</strong></h4>
+<p>O SQLite é um banco de dados relacional leve, portátil e de código aberto. Toda a base de dados fica armazenada em um único arquivo .db, o que o torna ideal para testes, aprendizagem e uso em computadores pessoais ou ambientes institucionais como o IPARDES, que trabalham com grandes volumes de dados, mas não necessariamente precisam de soluções complexas de banco em rede.</p>
+<blockquote class="blockquote">
+<p>💡 <strong>Por que aprender com SQLite?</strong><br>
+- Não requer servidor instalado.<br>
+- Interface gráfica amigável (DB Browser).<br>
+- Ideal para praticar comandos SQL e automatizar análises com R/Python.</p>
+</blockquote>
+<hr>
+</section>
+<section id="preparando-o-ambiente-de-trabalho-1" class="level4" data-number="3.0.0.3">
+<h4 data-number="3.0.0.3" class="anchored" data-anchor-id="preparando-o-ambiente-de-trabalho-1"><span class="header-section-number">3.0.0.3</span> <strong>Preparando o Ambiente de Trabalho</strong></h4>
+<p>Acesse o site oficial e clique no botão “Download”:<a href="https://www.sqlite.org/" class="uri">https://www.sqlite.org/</a></p>
+<p>Role a página até a seção <strong>“Precompiled Binaries for Windows”</strong></p>
+<p>Verifique a arquitetura do seu sistema (32 ou 64 bits): Para isso, vá até <strong>Configurações &gt; Sistema &gt; Sobre</strong> no seu Windows e procure por “Tipo de sistema”.</p>
+<p>Baixe o pacote adequado:</p>
+<p>Para <strong>64 bits</strong>, baixe:<br>
+<code>sqlite-tools-win-x64-XXXXXXX.zip</code></p>
+<p>Para <strong>32 bits</strong>, baixe:<br>
+<code>sqlite-tools-win-x86-XXXXXXX.zip</code></p>
+<p>O número <code>XXXXXXX</code> representa a versão atual (ex: 3490100). Pegue sempre a versão mais recente no topo da lista.</p>
+<p><strong>Extraia o conteúdo do <code>.zip</code></strong> para uma pasta acessível, como por exemplo: C:<br>
+Após extrair os arquivos do ZIP baixado, você pode: <strong>Clicar duas vezes em <code>sqlite3.exe</code></strong> dentro da pasta para abrir o terminal do SQLite.</p>
+<p>Ou, se preferir: <strong>Adicionar o caminho da pasta ao “Path” do sistema</strong>, para poder acessar o SQLite digitando <code>sqlite3</code> diretamente no terminal de qualquer lugar.<br>
+(Opcional, mas recomendado para quem for automatizar comandos no terminal.)</p>
+<p>Com ele, você poderá:</p>
+<ul>
+<li>Criar e editar arquivos <code>.db</code><br>
+</li>
+<li>Importar dados <code>.csv</code> ou <code>.xlsx</code><br>
+</li>
+<li>Executar comandos SQL<br>
+</li>
+<li>Visualizar e exportar tabelas</li>
+</ul>
+<hr>
+</section>
+<section id="leitura-de-arquivos-.csv-e-.xlsx-no-sqlite-via-terminal" class="level4" data-number="3.0.0.4">
+<h4 data-number="3.0.0.4" class="anchored" data-anchor-id="leitura-de-arquivos-.csv-e-.xlsx-no-sqlite-via-terminal"><span class="header-section-number">3.0.0.4</span> Leitura de Arquivos <code>.csv</code> e <code>.xlsx</code> no SQLite (via Terminal)</h4>
+<p>Antes de importar qualquer arquivo <code>.csv</code> no SQLite pelo terminal, é necessário:</p>
+<ol type="1">
+<li><p>Criar ou abrir um banco <code>.db</code>;</p></li>
+<li><p>Definir o modo e o separador dos dados;</p></li>
+<li><p>Importar o arquivo <code>.csv</code> para uma tabela.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span> caminho/para/seu_banco.db</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">.mode</span> csv</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">.separator</span> <span class="st">","</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">.import</span> <span class="st">"caminho/para/arquivo.csv"</span> nome_da_tabela</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Observação, O separador padrão é vírgula "," mas pode ser alterado </span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># para ponto e vírgula ";" com .separator ";" conforme a base de dados.</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
